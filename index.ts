@@ -1,3 +1,6 @@
+import * as React from 'react'
+import { style as typeStyle } from 'typestyle'
+
 class Style {
 	selector: string;
 	rules: object;

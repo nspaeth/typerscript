@@ -14,5 +14,9 @@
     "react"
   ],
   "author": "Nathan Spaeth",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.6.1",
+    "typestyle": "^1.3.7"
+  }
 }
