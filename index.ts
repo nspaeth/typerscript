@@ -8,7 +8,7 @@ interface Selector {
 	className?: string;
 }
 
-class Style {
+export class Style {
 	selector: string;
 	rules: Object;
 	constructor({selector, rules}: {selector: string, rules: object}) {
@@ -110,4 +110,4 @@ const createTag = (h:any) => (tagName:any) => (...args:any[]) => {
 	return h(tagName, first, ...rest)
 }
 
-export { h, hh, Classes, Style, createTag, }
+export { h, hh, createTag, Classes }
