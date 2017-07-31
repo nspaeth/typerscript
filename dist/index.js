@@ -19,7 +19,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var typestyle_1 = require("typestyle");
-var __IS_NATIVE__ = process.env.IS_NATIVE;
+var __ = { IS_NATIVE__: false };
 var Style = (function () {
     function Style(_a) {
         var selector = _a.selector, rules = _a.rules;
@@ -35,7 +35,7 @@ var Classes = (function () {
         var _this = this;
         Object.entries(classes).forEach(function (_a) {
             var key = _a[0], val = _a[1];
-            var selector = __IS_NATIVE__ ? key : typestyle_1.style(val);
+            var selector = __.IS_NATIVE__ ? key : typestyle_1.style(val);
             _this[key] = new Style({
                 rules: val,
                 selector: selector,
@@ -99,7 +99,7 @@ var hh = function (nameOrType) { return function () {
     }
     else if (isStyleObject(args[arg])) {
         selector = parseSelector(args[arg].selector);
-        if (__IS_NATIVE__) {
+        if (__.IS_NATIVE__) {
             rules = Object.assign({}, args[arg].rules);
         }
         arg++;

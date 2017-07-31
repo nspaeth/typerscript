@@ -1,7 +1,12 @@
 import * as React from 'react'
 import { style as typeStyle } from 'typestyle'
-declare var process: any;
-const __IS_NATIVE__: boolean = process.env.IS_NATIVE
+const __ = { IS_NATIVE__: false }
+// declare var process: any;
+// declare var __: {IS_NATIVE__: boolean}
+// try { if (!__) {} }
+// catch(e) {
+// 	let __ = {IS_NATIVE__: false}
+// }
 
 interface Selector {
 	id?: string;
@@ -22,7 +27,7 @@ class Classes {
 	[index: string]: Style
 	constructor(classes: object) {
 		Object.entries(classes).forEach(([key, val]) => {
-			const selector = __IS_NATIVE__ ? key : typeStyle(val)
+			const selector = __.IS_NATIVE__ ? key : typeStyle(val)
 			this[key] = new Style({
 				rules: val,
 				selector,
@@ -79,7 +84,7 @@ const hh = (nameOrType: any) => (...args: any[]) => {
 		arg++
 	} else if (isStyleObject(args[arg])) {
 		selector = parseSelector(args[arg].selector)
-		if (__IS_NATIVE__) {
+		if (__.IS_NATIVE__) {
 			rules = Object.assign({}, args[arg].rules)
 		}
 		arg++
