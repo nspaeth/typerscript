@@ -20,7 +20,7 @@ export class Style {
 
 class Classes {
 	[index: string]: Style
-	constructor(classes: object[]) {
+	constructor(classes: object) {
 		Object.entries(classes).forEach(([key, val]) => {
 			const selector = __IS_NATIVE__ ? key : typeStyle(val)
 			this[key] = new Style({
