@@ -8,7 +8,7 @@ export declare class Style {
 }
 declare class Classes {
     [index: string]: Style;
-    constructor(classes: object[]);
+    constructor(classes: object);
 }
 declare const hh: (nameOrType: any) => (...args: any[]) => any;
 declare const h: (nameOrType: any, ...rest: any[]) => any;
