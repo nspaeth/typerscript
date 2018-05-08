@@ -1,6 +1,6 @@
 {
   "name": "typerscript",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "hyperscript and hyperscript helpers written in TypeScript, leveraging TypeStyle",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
