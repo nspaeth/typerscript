@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@types/react@^16.3.12":
-  version "16.3.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.12.tgz#68d9146f3e9797e38ffbf22f7ed1dde91a2cfd2e"
+"@types/react@16.3.11":
+  version "16.3.11"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.11.tgz#345a17f1c96420f10b9f0dc696c31091ff9d66ea"
   dependencies:
     csstype "^2.2.0"
 
@@ -270,8 +270,8 @@ crypto-random-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
 csstype@^2.2.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.3.0.tgz#062e141c78345cf814da0e0b716ad777931b08af"
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.4.2.tgz#158e36c69566bf968da63d0ba14eda1c20e8643a"
 
 cvss@^1.0.0:
   version "1.0.2"
