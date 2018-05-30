@@ -3,6 +3,9 @@ import { style as typeStyle } from 'typestyle'
 const __ = { IS_NATIVE__: false }
 // This avoids allocating new empty objects all the time
 const EmptyObject = Object.freeze({})
+const objIsLocked = (obj: any) =>
+	!Object.isExtensible(obj) || Object.isFrozen(obj) || Object.isSealed(obj)
+
 // declare var process: any;
 // declare var __: {IS_NATIVE__: boolean}
 // try { if (!__) {} }
@@ -178,6 +181,7 @@ function h<T, Props>(nameOrType: any, ..._args: any[]) {
 	let rules: { [index: string]: any }
 	let props: { [index: string]: any }
 	let children: any[]
+	let isLocked = false
 	const args = _args.filter((arg: any) => arg !== undefined)
 	let arg = 0
 	if (isSelector(args[arg])) {
@@ -193,6 +197,7 @@ function h<T, Props>(nameOrType: any, ..._args: any[]) {
 
 	if (typeof args[arg] === 'object' && !isChildren(args[arg])) {
 		props = args[arg]
+		isLocked = true
 		arg++
 	} else props = {}
 
@@ -201,8 +206,10 @@ function h<T, Props>(nameOrType: any, ..._args: any[]) {
 	}
 
 	if (__.IS_NATIVE__) {
+		if (isLocked) { props = { ...props } }
 		props.style = props.style ? { ...rules, ...props.style } : rules
 	} else if (rules) {
+		if (isLocked) { props = { ...props } }
 		// react-native-web needs 'flex' props as an actual style prop in order
 		// to work correctly
 		const flexObj = getFlexObj(rules)
