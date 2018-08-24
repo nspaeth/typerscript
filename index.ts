@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { style as typeStyle } from 'typestyle'
+import * as typestyle from 'typestyle'
+
 const __ = { IS_NATIVE__: false }
 // This avoids allocating new empty objects all the time
 const EmptyObject = Object.freeze({})
@@ -223,4 +225,4 @@ function h<T, Props>(nameOrType: any, ..._args: any[]) {
 	return createElement(nameOrType, props, children)
 }
 
-export { h }
+export { h, typestyle }
