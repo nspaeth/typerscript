@@ -222,6 +222,9 @@ function h<T, Props>(nameOrType: any, ..._args: any[]) {
 	if (selector) {
 		props = {...selector, ...props}
 	}
+	// In some cases, e.g. react-native's TouchableWithoutFeedback we will get
+	// 'Error: React.Children.only expected to receive a single React element child.'
+	// when passing an array, so if there is only one child, just put that
 	return createElement(nameOrType, props, children)
 }
 
