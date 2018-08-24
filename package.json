@@ -1,6 +1,6 @@
 {
   "name": "typerscript",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "hyperscript and hyperscript helpers written in TypeScript, leveraging TypeStyle",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,12 +20,13 @@
   "license": "ISC",
   "dependencies": {
     "@types/react": "16.3.11",
-    "typescript": "^2.8.1",
-    "typestyle": "^1.3.7"
+    "typescript": "^2.8.1"
   },
   "devDependencies": {
     "publish-please": "^2.4.1",
     "react": "^16.3.2"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "typestyle": "1.5.1"
+  }
 }
