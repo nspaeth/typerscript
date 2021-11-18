@@ -5,17 +5,37 @@
     "target": "es5",
     "noImplicitAny": true,
     "sourceMap": true,
-		"lib": [ "dom", "es2017" ],
+		"baseUrl": "./src/",
+		"skipLibCheck": true,
+		"lib": [
+			"dom",
+			"es2020"
+		],
 		"outDir": "dist",
 		"noImplicitReturns": true,
-		"jsx": "react"
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react",
+		"types": [
+			"react",
+			"react-dom",
+			"intern"
+		]
   },
+	"filesGlob": [
+		"src/**/*.ts",
+		"test/**/*.ts"
+	],
+	"include": [
+		"src/**/*.ts",
+		"test/**/*.ts"
+	],
 	"exclude": [
     "node_modules",
 		"dist"
 	],
 		"types": [
 		"react",
-		"react-native"
+		"react-dom",
+		"intern"
 	]
 }

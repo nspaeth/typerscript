@@ -57,22 +57,22 @@ const isSelector = (param: any) => typeof param === 'string'
 const isChildren = Array.isArray
 
 const classIdSplit = /([\.#]?[a-zA-Z0-9\u007F-\uFFFF_:-]+)/
-function parseSelector(selector: string) {
-	const parts = selector.split(classIdSplit)
-	let classNames = []
-	let id
-	for (let part of parts) {
-		if (part.startsWith('#')) id = part.substring(1)
-		else if (part.startsWith('.')) classNames.push(part.substring(1))
+	function parseSelector(selector: string) {
+		const parts = selector.split(classIdSplit)
+		let classNames = []
+		let id
+		for (let part of parts) {
+			if (part.startsWith('#')) id = part.substring(1)
+			else if (part.startsWith('.')) classNames.push(part.substring(1))
+		}
+		const className = classNames.join(' ')
+
+		if (id && className) { return { id, className } }
+		if (id) { return { id } }
+		if (className) { return { className } }
+
+		return undefined
 	}
-	const className = classNames.join(' ')
-
-	if (id && className) { return { id, className } }
-	if (id) { return { id } }
-	if (className) { return { className } }
-
-	return undefined
-}
 
 function createElement(nameOrType: any, properties: any={isRendered: true}, children: any[]=[]) {
 	const { isRendered, ...props } = properties
@@ -180,31 +180,31 @@ function h<T, Props>(nameOrType: any, ..._args: any[]) {
 	// const name = nameOrType.displayName || nameOrType.name || nameOrType
 	let selector: Selector | undefined
 	let rules: { [index: string]: any }
-	let props: { [index: string]: any }
+		let props: {[index:string]: any}
 	let children: any[]
 	let isLocked = false
 	const args = _args.filter((arg: any) => arg !== undefined)
-	let arg = 0
-	if (isSelector(args[arg])) {
-		selector = parseSelector(args[arg])
-		arg++
-	} else if (isStyleObject(args[arg])) {
-		selector = parseSelector(args[arg].selector)
+		let arg = 0
+		if (isSelector(args[arg])) {
+			selector = parseSelector(args[arg])
+			arg++
+		} else if (isStyleObject(args[arg])) {
+			selector = parseSelector(args[arg].selector)
 		// if (__.IS_NATIVE__) {
 		rules = args[arg].rules
 		// }
 		arg++
-	}
+			}
 
-	if (typeof args[arg] === 'object' && !isChildren(args[arg])) {
-		props = args[arg]
+		if (typeof args[arg] === 'object' && !isChildren(args[arg])) {
+			props = args[arg]
 		isLocked = true
-		arg++
+			arg++
 	} else props = {}
 
 	if (isChildren(args[arg])) {
 		children = args[arg]
-	}
+		}
 
 	if (__.IS_NATIVE__) {
 		if (isLocked) { props = { ...props } }
